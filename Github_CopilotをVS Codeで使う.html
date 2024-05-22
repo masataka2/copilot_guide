@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Github Copilot&#x3092;VS Code&#x3067;&#x4f7f;&#x3046;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="github-copilotをvs-codeで使う">Github CopilotをVS Codeで使う</h1>
+<h2 id="github-copilotとは">GitHub Copilotとは</h2>
+<p>GitHub Copilotは、GPT-4を使用したAIコーディング アシスタントで、コーディング作業を支援します。</p>
+<p>GitHub Copilotは様々なプログラミング言語に対応しています。得意とするプログラミング言語は、Python、JavaScript、TypeScript、Ruby、Go、C#、C++です。なおHTMLやCSSでも動作します。<br>
+GitHub Copilotは、対応コードエディタに専用のプラグイン(拡張機能)をインストールすることで使えるようになります。<br>
+GitHub Copilotが使えるコードエディタは、VS Code(Visual Studio Code)、Visual Studio、Neovim、JetBrainsなどです。</p>
+<p>今回は、VS CodeでGitHub Copilotを使う方法を解説します。</p>
+<h2 id="github-copilotの料金">GitHub Copilotの料金</h2>
+<p>GitHub Copilotは有料のサブスクリプションサービスです。<br>
+無料のトライアル期間が30日間あります(以前は60日間あった模様です)。個人向けの有料プランは、月額10ドルです。<br>
+支払いには、クレジットカード、VISAデビットやPayPalを使用します。VISAデビット使用時は、トライアル開始時にいったん10ドルが決済されますが、直後に10ドルが返却されます。トライアル期間終了後に、あらためて10ドルが決済されて有料プラン開始となります。</p>
+<h2 id="事前準備">事前準備</h2>
+<p>事前にGitHubのアカウントを作成しておきます。<br>
+GitHubのアカウント作成方法は以下のページを参考にしてください。<br>
+<a href="https://qiita.com/Baru_Try/items/e80a765919a35a3c28c7" target="_blank">https://qiita.com/Baru_Try/items/e80a765919a35a3c28c7</a></p>
+<h2 id="github-copilotの使い方">GitHub Copilotの使い方</h2>
+<p>GitHub Copilotの登録方法や使い方については以下のページを参考にしてください。<br>
+<a href="https://www.kagoya.jp/howto/it-glossary/develop/githubcopilot/#GitHub_Copilot-4" target="_blank">https://www.kagoya.jp/howto/it-glossary/develop/githubcopilot/#GitHub_Copilot-4</a></p>
+<ul>
+<li>GitHub Copilotの登録方法</li>
+<li>コードエディタに専用プラグインをインストールする</li>
+<li>GitHub Copilotの機能を試してみる</li>
+<li>【参考】GitHub Copilotのプランをキャンセルしたい場合
+が記載されています。</li>
+</ul>
+<p>GitHub Copilotでできることについては、同梱のファイル<br>
+<a href="./GitHub_Copilotでできること一挙ご紹介.pdf" target="_blank">GitHub_Copilotでできること一挙ご紹介.pdf</a><br>
+を参照してください。</p>
+<h2 id="共用pcで使用時のtips">共用PCで使用時のTips</h2>
+<h3 id="githubからサインアウトする">GitHubからサインアウトする</h3>
+<p>作業終了時には、VS Code上でGitHubからサインアウトをしておきます。</p>
+<p><img src="file:///c:\Users\user-105\Documents\nozaki\GIthub Copilot 利用ガイド\images\signout01.png" alt="VS Code上でGitHubからサインアウト"></p>
+<p>また、ブラウザ上でもGituHubからサインアウトしておきます。</p>
+<ol>
+<li>
+<p>WebブラウザにてGitHubサイトにアクセスし、管理画面右サイドメニューから[Sign out]をクリックします。<br>
+<img src="file:///c:\Users\user-105\Documents\nozaki\GIthub Copilot 利用ガイド\images\signout02.png" alt="WebブラウザにてGitHubからサインアウト1"></p>
+</li>
+<li>
+<p>Sign out画面が表示されますので、[Sign out]もしくは、[Sign out from all accounts]をクリックするとサインアウトが完了します。<br>
+<img src="file:///c:\Users\user-105\Documents\nozaki\GIthub Copilot 利用ガイド\images\signout03.png" alt="WebブラウザにてGitHubからサインアウト2"></p>
+</li>
+</ol>
+<h3 id="拡張機能を無効にする">拡張機能を無効にする</h3>
+<ol>
+<li>
+<p>他の方がVS Codeをさわる可能性がある場合は、VS Codeにインストールされている「GitHub Copilot」拡張機能を無効に設定しておきます。<br>
+<img src="file:///c:\Users\user-105\Documents\nozaki\GIthub Copilot 利用ガイド\images\signout04.png" alt="GitHub Copilot拡張機能を無効にする"></p>
+</li>
+<li>
+<p>GitHub Copilot、GitHub Copilot Chatがグレーアウト(無効になっている)している事を確認します。
+<img src="file:///c:\Users\user-105\Documents\nozaki\GIthub Copilot 利用ガイド\images\signout05.png" alt="GitHub Copilot無効の確認"></p>
+</li>
+</ol>
+
+            
+            
+        </body>
+        </html>
