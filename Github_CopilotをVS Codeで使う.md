@@ -62,7 +62,7 @@ GitHub Copilotでできることについては、同梱のファイル
 1. 他の方がVS Codeをさわる可能性がある場合は、VS Codeにインストールされている「GitHub Copilot」拡張機能を無効に設定しておきます。  
 ![GitHub Copilot拡張機能を無効にする](./images/signout04.png)
 
-2. GitHub Copilot、GitHub Copilot Chatがグレーアウト(無効になっている)している事を確認します。
+2. GitHub Copilot、GitHub Copilot Chatが無効になっている(グレーアウトしている)事を確認します。
 ![GitHub Copilot無効の確認](./images/signout05.png)
 
 
